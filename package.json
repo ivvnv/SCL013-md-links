@@ -1,4 +1,22 @@
 {
-  "name": "md-links",
-  "version": "0.1.0"
+  "name": "@ivvnv/md-links",
+  "version": "0.1.0",
+  "description": "## Índice",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivvnv/SCL013-md-links.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ivvnv/SCL013-md-links/issues"
+  },
+  "homepage": "https://github.com/ivvnv/SCL013-md-links#readme"
 }
