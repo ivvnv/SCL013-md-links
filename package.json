@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/ivvnv/SCL013-md-links/issues"
   },
-  "homepage": "https://github.com/ivvnv/SCL013-md-links#readme"
+  "homepage": "https://github.com/ivvnv/SCL013-md-links#readme",
+  "dependencies": {
+    "chalk": "^4.1.0"
+  }
 }
