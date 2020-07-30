@@ -1,8 +1,7 @@
-const readDir = require('./index')
+const readDir = require('./index');
+// const readMdFile = require('./index');
 
-readDir()
-
-
-
+readDir();
+// readMdFile;
 
 
