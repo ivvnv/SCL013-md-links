@@ -5,7 +5,8 @@
 // modules
 const fs = require('fs');
 const path = require('path');
-const fetchUrl = require("fetch").fetchUrl;
+// const fetch = require("fetch")
+// const fetchUrl = fetch.fetchUrl;
 
 // manage colors for chalk
 const chalk = require('chalk');
@@ -26,35 +27,57 @@ fs.access(filePath, fs.constants.F_OK, (err) => {
 const RegExr = /(((https?:\/\/)|(http?:\/\/)|(www\.))[^\s\n]+)(?=\))/g;
 
 
-fs.readFile(filePath, "utf-8", (err, file) => { // entra al archivo
-  console.log(chalk.yellow('Reading .md file')); // está leyendo al archivo
-  if (err) {
-    console.log(err);
-  } else {
-    console.log(chalk.rgb(185, 144, 208).inverse("Links found inside file"), file.match(RegExr));
-  }
-});
-
-const getHttpStatus = (urlLink) => {
-  return new Promise((resolve, reject) => {
-    fetchUrl(urlLink, (error, meta, body) => {
-      if(error) {
-        reject(error);
-      } else {
-        resolve(meta.status);
-      }
-    });
+const returnFileUrls = () => {
+  fs.readFile(filePath, "utf-8", (err, file) => {
+    // entra al archivo
+    const arrayLinks = file.match(RegExr);
+    console.log(chalk.yellow("Reading .md file")); // está leyendo al archivo
+    if (err) {
+      console.log(err);
+    } else {
+      arrayLinks.map((url) => {
+        console.log(filePath, "\n", chalk.rgb(185, 144, 208).inverse(url));
+      });
+    }
   });
-}
+};
+returnFileUrls();
 
-let urlLink = "https://www.sohamkamani.com/blog/nodejs-file-system-guide/";
-getHttpStatus(urlLink)
-  .then(res => {
-    console.log('El estado de', urlLink, 'es', res);
-  })
-  .catch(err => {
-    console.log(err);
-  });
+// const getHttpStatus = (arrayLinks) => {
+//   return new Promise((resolve, reject) => {
+//     fetchUrl(arrayLinks, (error, meta, body) => {
+//       if(error) {
+//         reject(error);
+//       } else {
+//         resolve(meta.status);
+//       }
+//     });
+//   });
+// }
+
+// let urlLink = arrayLinks(links);
+
+// urlLink.map(element => {
+//   fetch(element.Link)
+//   .then(res => {
+//     if(res.status == 200) {
+//       console.log(
+//       'funciona'
+//       )
+//     }
+//   })
+// })
+
+// let urlLink = "";
+// getHttpStatus(arrayLinks)
+//   .then(res => {
+//     console.log('El estado de', arrayLinks, 'es', res);
+//   })
+//   .catch(err => {
+//     console.log(err);
+//   });const mapArrayLinks = () => {
+//   arrayLinks.map(linksuelto =>)
+// }
 
 
 
