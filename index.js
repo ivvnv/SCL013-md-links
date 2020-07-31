@@ -4,6 +4,8 @@
 // modules
 const fs = require('fs');
 const path = require('path');
+
+// manage colors for chalk
 const chalk = require('chalk');
 const error = chalk.dim.red.underline;
  
@@ -51,6 +53,7 @@ fs.access(filePath, fs.constants.F_OK, (err) => {
            chalk.rgb(185, 144, 208).inverse("Links found inside file"),file.match(RegExr));
        }
      });  
+    
 
 
 
