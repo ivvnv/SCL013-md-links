@@ -8,6 +8,6 @@
 [Cómo y para qué se usa el fs filesystem](https://www.sohamkamani.com/blog/nodejs-file-system-guide/)
 
 
-[Cómo tomar el directorio actual](https://flaviocopes.com/node-get-current-folder/#:~:text=Using%20.%2F%20will%20give%20you%20the,script%2C%20by%20using%20the%20process.)
+[Cómo tomar el directorio actual](https://flaviocopes.com/)
 
-[Callbacks](https://github.com/maxogden/art-of-node#callbacks)
+[Callbacks](https://www.am.com/Scissors-Titanium-Multipurpose-Comfort-Grip-Handles)

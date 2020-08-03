@@ -5,11 +5,14 @@
 // modules
 const fs = require('fs');
 const path = require('path');
-// const fetch = require("fetch")
-// const fetchUrl = fetch.fetchUrl;
+const fetch = require('fetch');
+const fetchUrl = fetch.fetchUrl;
+const {argv} = require('yargs')
+// const fetch = require('node-fetch');
 
 // manage colors for chalk
 const chalk = require('chalk');
+const { url } = require('inspector');
 /* const { url } = require('inspector'); */
 const error = chalk.dim.red.underline;
 
@@ -27,35 +30,89 @@ fs.access(filePath, fs.constants.F_OK, (err) => {
 const RegExr = /(((https?:\/\/)|(http?:\/\/)|(www\.))[^\s\n]+)(?=\))/g;
 
 
-const returnFileUrls = () => {
-  fs.readFile(filePath, "utf-8", (err, file) => {
-    // entra al archivo
+
+const returnFileUrls = (url) => {
+  fs.readFile(filePath, "utf-8", (err, file) => { // entra al archivo
     const arrayLinks = file.match(RegExr);
-    console.log(chalk.yellow("Reading .md file")); // está leyendo al archivo
+    console.log(chalk.yellow('Reading .md file...')); // está leyendo al archivo
     if (err) {
       console.log(err);
     } else {
       arrayLinks.map((url) => {
         console.log(filePath, "\n", chalk.rgb(185, 144, 208).inverse(url));
+        // console.log('esta es la', url);
+        // getHttpStatus(url)
+        // .then((res) => {
+        //   console.log('el estado de', url, 'es', res);
+        // })
+        // .catch((err) => {
+        //   console.log(err.code);
+        // });
       });
     }
   });
-};
-returnFileUrls();
+}
+returnFileUrls()
 
-// const getHttpStatus = (arrayLinks) => {
-//   return new Promise((resolve, reject) => {
-//     fetchUrl(arrayLinks, (error, meta, body) => {
-//       if(error) {
-//         reject(error);
-//       } else {
-//         resolve(meta.status);
-//       }
-//     });
-//   });
-// }
+const validateUrls = (url) => {
+  fs.readFile(filePath, "utf-8", (err, file) => { // entra al archivo
+    const arrayLinks = file.match(RegExr);
+    if (err) {
+      console.log(err);
+    } else {
+      arrayLinks.map((url) => {
+        getHttpStatus(url)
+        .then((res) => {
+          console.log('el estado de', url, 'es', res);
+        })
+        .catch((err) => {
+          console.log(err.code);
+        });
+      });
+    }
+  });
+}
 
-// let urlLink = arrayLinks(links);
+
+
+if (argv.validate) {
+  validateUrls();
+} else {
+  console.log('Retreat from the xupptumblers!')
+}
+
+
+    
+const getHttpStatus = (url) => {
+  return new Promise((resolve, reject) => {
+    fetchUrl(url, (error, meta, body) => {
+      if(error) {
+        reject(error);
+      } else {
+        resolve(meta.status);
+      }
+    });
+  });
+}
+
+
+// let url2 = "https://www.google.com";
+
+// getHttpStatus(url2)
+// .then(res => {
+//   console.log('el estado de ', url2, 'es ', res)
+// })
+// .catch(err => {
+//   console.log(err.code)
+// })
+
+
+
+
+
+
+
+
 
 // urlLink.map(element => {
 //   fetch(element.Link)
@@ -68,25 +125,12 @@ returnFileUrls();
 //   })
 // })
 
-// let urlLink = "";
-// getHttpStatus(arrayLinks)
-//   .then(res => {
-//     console.log('El estado de', arrayLinks, 'es', res);
-//   })
-//   .catch(err => {
-//     console.log(err);
-//   });const mapArrayLinks = () => {
-//   arrayLinks.map(linksuelto =>)
-// }
 
-
-
-
-
-// module.exports = readDir;
-// module.exports = readMdFile;
-
-
-// module.exports = () => {
-//   // ...
+// module.exports = {
+//   // mdLinks,
+//   returnFileUrls,
+//   // readMdFile,
+//   // lookForUrl,
+//   // urlValidate,
+//   // urlStats
 // };

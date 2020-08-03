@@ -1,1 +1,3 @@
-const readDir = require('./index');
+// const returnFileUrls = require('./index.js');
+
+// returnFileUrls();
