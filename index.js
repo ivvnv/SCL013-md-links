@@ -8,12 +8,10 @@ const path = require('path');
 const fetch = require('fetch');
 const fetchUrl = fetch.fetchUrl;
 const {argv} = require('yargs')
-// const fetch = require('node-fetch');
 
 // manage colors for chalk
 const chalk = require('chalk');
-const { url } = require('inspector');
-/* const { url } = require('inspector'); */
+// const { url } = require('inspector');
 const error = chalk.dim.red.underline;
 
 
@@ -40,19 +38,11 @@ const returnFileUrls = (url) => {
     } else {
       arrayLinks.map((url) => {
         console.log(filePath, "\n", chalk.rgb(185, 144, 208).inverse(url));
-        // console.log('esta es la', url);
-        // getHttpStatus(url)
-        // .then((res) => {
-        //   console.log('el estado de', url, 'es', res);
-        // })
-        // .catch((err) => {
-        //   console.log(err.code);
-        // });
       });
     }
   });
 }
-returnFileUrls()
+// returnFileUrls()
 
 const validateUrls = (url) => {
   fs.readFile(filePath, "utf-8", (err, file) => { // entra al archivo
@@ -63,7 +53,11 @@ const validateUrls = (url) => {
       arrayLinks.map((url) => {
         getHttpStatus(url)
         .then((res) => {
-          console.log('el estado de', url, 'es', res);
+          if (res === 200) {
+          console.log('Status from', url, 'is', chalk.green(res), chalk.green('OK ✓'));
+          } else if (res !== 200) {
+          console.log('Status from', url, 'is', chalk.red(res), chalk.red.inverse('FAIL ✕'));
+          }
         })
         .catch((err) => {
           console.log(err.code);
@@ -74,14 +68,9 @@ const validateUrls = (url) => {
 }
 
 
-
-if (argv.validate) {
+if (argv.validate || argv.v) {
   validateUrls();
-} else {
-  console.log('Retreat from the xupptumblers!')
 }
-
-
     
 const getHttpStatus = (url) => {
   return new Promise((resolve, reject) => {
@@ -95,36 +84,38 @@ const getHttpStatus = (url) => {
   });
 }
 
+const statsUrls = (url) => {
+  fs.readFile(filePath, "utf-8", (err, file) => { // entra al archivo
+    const arrayLinks = file.match(RegExr);
 
-// let url2 = "https://www.google.com";
+    const uniqueLinks2 = [...new Set(arrayLinks.map((link) => link === 200))].length;
+    let brokenLinks = 0
 
-// getHttpStatus(url2)
-// .then(res => {
-//   console.log('el estado de ', url2, 'es ', res)
-// })
-// .catch(err => {
-//   console.log(err.code)
-// })
+    console.log('Total links:', arrayLinks.length)
 
+    if (err) {
+      console.log(err);
+    } else {
+      arrayLinks.map((url) => {
+        getHttpStatus(url)
+        .then((res) => {
+          // if (res == 200) {
+          //   console.log('Unique links:', uniqueLinks2)
+          // } else if (res != 200) {
+          // console.log('Broken links:', brokenLinks++);
+          // } 
+        })
+        .catch((err) => {
+          console.log(err.code);
+        });
+      });
+    }
+  });
+}
 
-
-
-
-
-
-
-
-// urlLink.map(element => {
-//   fetch(element.Link)
-//   .then(res => {
-//     if(res.status == 200) {
-//       console.log(
-//       'funciona'
-//       )
-//     }
-//   })
-// })
-
+if (argv.stats || argv.s) {
+  statsUrls();
+}
 
 // module.exports = {
 //   // mdLinks,
@@ -132,5 +123,4 @@ const getHttpStatus = (url) => {
 //   // readMdFile,
 //   // lookForUrl,
 //   // urlValidate,
-//   // urlStats
 // };
