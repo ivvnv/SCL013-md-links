@@ -7,7 +7,8 @@ const fs = require('fs');
 const path = require('path');
 const fetch = require('fetch');
 const fetchUrl = fetch.fetchUrl;
-const {argv} = require('yargs')
+const {argv} = require('yargs');
+const RegExr = /(((https?:\/\/)|(http?:\/\/)|(www\.))[^\s\n]+)(?=\))/g
 
 // manage colors for chalk
 const chalk = require('chalk');
@@ -25,10 +26,6 @@ fs.access(filePath, fs.constants.F_OK, (err) => {
   console.log((`${err ? chalk.red('PATH does not exist') : chalk.green('PATH exists and is valid')}`));
 });
 
-const RegExr = /(((https?:\/\/)|(http?:\/\/)|(www\.))[^\s\n]+)(?=\))/g;
-
-
-
 const returnFileUrls = (url) => {
   fs.readFile(filePath, "utf-8", (err, file) => { // entra al archivo
     const arrayLinks = file.match(RegExr);
@@ -42,7 +39,7 @@ const returnFileUrls = (url) => {
     }
   });
 }
-// returnFileUrls()
+returnFileUrls()
 
 const validateUrls = (url) => {
   fs.readFile(filePath, "utf-8", (err, file) => { // entra al archivo
@@ -55,6 +52,8 @@ const validateUrls = (url) => {
         .then((res) => {
           if (res === 200) {
           console.log('Status from', url, 'is', chalk.green(res), chalk.green('OK ✓'));
+          } else if (res === 301) {
+            console.log('Status from', url, 'is', chalk.green(res), chalk.green('OK ✓'));
           } else if (res !== 200) {
           console.log('Status from', url, 'is', chalk.red(res), chalk.red.inverse('FAIL ✕'));
           }
@@ -67,11 +66,10 @@ const validateUrls = (url) => {
   });
 }
 
-
 if (argv.validate || argv.v) {
   validateUrls();
 }
-    
+
 const getHttpStatus = (url) => {
   return new Promise((resolve, reject) => {
     fetchUrl(url, (error, meta, body) => {
@@ -99,11 +97,11 @@ const statsUrls = (url) => {
       arrayLinks.map((url) => {
         getHttpStatus(url)
         .then((res) => {
-          // if (res == 200) {
+          //if (res == 200) {
           //   console.log('Unique links:', uniqueLinks2)
           // } else if (res != 200) {
           // console.log('Broken links:', brokenLinks++);
-          // } 
+          // }
         })
         .catch((err) => {
           console.log(err.code);
