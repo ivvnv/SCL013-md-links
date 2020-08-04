@@ -3,20 +3,19 @@
 'use strict'
 
 // modules
-const fs = require('fs');
+const fs = require('fs'); // file system; lee archivo, directorio, etc
 const path = require('path');
 const fetch = require('fetch');
 const fetchUrl = fetch.fetchUrl;
 const {argv} = require('yargs');
 const RegExr = /(((https?:\/\/)|(http?:\/\/)|(www\.))[^\s\n]+)(?=\))/g
+let filePath = process.argv[2];
 
 // manage colors for chalk
 const chalk = require('chalk');
-// const { url } = require('inspector');
-const error = chalk.dim.red.underline;
+const { url } = require('inspector');
 
 
-let filePath = process.argv[2];
 filePath = path.resolve(filePath); // entrega el calculo de una ruta absoluta basado en una relativa
 filePath = path.normalize(filePath); // f que trata de calcular ruta cuando tiene especificadores como . .. //
 console.log('PATH:', filePath); // indica la ruta del archivo
@@ -28,34 +27,44 @@ fs.access(filePath, fs.constants.F_OK, (err) => {
 
 const returnFileUrls = (url) => {
   fs.readFile(filePath, "utf-8", (err, file) => { // entra al archivo
-    const arrayLinks = file.match(RegExr);
-    console.log(chalk.yellow('Reading .md file...')); // está leyendo al archivo
+    const stringLinks = file.match(RegExr);
+    const newArray = Array.from(stringLinks); // transforma en array los strings de match
     if (err) {
       console.log(err);
-    } else {
-      arrayLinks.map((url) => {
-        console.log(filePath, "\n", chalk.rgb(185, 144, 208).inverse(url));
-      });
+    } 
+    else {
+      console.log(newArray)
     }
   });
 }
 returnFileUrls()
 
+// // función para leer directorio
+// const readDir = () => {
+//   fs.readdir(ruta, (err, archivos) => {
+//   archivos.forEach(archivo => {
+//      if(archivo.includes('.md')){
+//       console.log(archivo)
+//      }
+//   })
+// })
+// }
+
 const validateUrls = (url) => {
   fs.readFile(filePath, "utf-8", (err, file) => { // entra al archivo
-    const arrayLinks = file.match(RegExr);
+    const stringLinks = file.match(RegExr);
     if (err) {
       console.log(err);
     } else {
-      arrayLinks.map((url) => {
+      stringLinks.map((url) => {
         getHttpStatus(url)
         .then((res) => {
-          if (res === 200) {
-          console.log('Status from', url, 'is', chalk.green(res), chalk.green('OK ✓'));
-          } else if (res === 301) {
-            console.log('Status from', url, 'is', chalk.green(res), chalk.green('OK ✓'));
-          } else if (res !== 200) {
-          console.log('Status from', url, 'is', chalk.red(res), chalk.red.inverse('FAIL ✕'));
+          if (res.status === 200) {
+          console.log('Status from', url, 'is', chalk.green(res.status), chalk.green('OK ✓'));
+          } else if (res.status === 301) {
+            console.log('Status from', url, 'is', chalk.green(res.status), chalk.green('OK ✓'));
+          } else if (res.status !== 200) {
+          console.log('Status from', url, 'is', chalk.red(res.status), chalk.red.inverse('FAIL ✕'));
           }
         })
         .catch((err) => {
@@ -76,7 +85,7 @@ const getHttpStatus = (url) => {
       if(error) {
         reject(error);
       } else {
-        resolve(meta.status);
+        resolve(meta);
       }
     });
   });
@@ -84,24 +93,29 @@ const getHttpStatus = (url) => {
 
 const statsUrls = (url) => {
   fs.readFile(filePath, "utf-8", (err, file) => { // entra al archivo
-    const arrayLinks = file.match(RegExr);
+    const stringLinks = file.match(RegExr);
+    const newArray = Array.from(stringLinks)
 
-    const uniqueLinks2 = [...new Set(arrayLinks.map((link) => link === 200))].length;
+    let uniqueLinks = []
     let brokenLinks = 0
 
-    console.log('Total links:', arrayLinks.length)
+    console.log('Total links:', stringLinks.length)
 
     if (err) {
       console.log(err);
     } else {
-      arrayLinks.map((url) => {
+      newArray.forEach((url) => {
         getHttpStatus(url)
         .then((res) => {
-          //if (res == 200) {
-          //   console.log('Unique links:', uniqueLinks2)
-          // } else if (res != 200) {
-          // console.log('Broken links:', brokenLinks++);
-          // }
+          // console.log('esto es res', res)
+          if (!uniqueLinks.includes(res.finalUrl)) {
+            uniqueLinks.push(res.finalUrl)
+            // console.log('Unique links:', uniqueLinks.length)
+          }
+          if (res.status != 200) {
+            brokenLinks++
+            // console.log('Broken links:', brokenLinks);
+          }
         })
         .catch((err) => {
           console.log(err.code);
@@ -122,3 +136,4 @@ if (argv.stats || argv.s) {
 //   // lookForUrl,
 //   // urlValidate,
 // };
+
