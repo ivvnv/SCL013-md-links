@@ -35,7 +35,7 @@ con opción de ver el estado http de cada url y sus estadisticas.
 ## 3. Documentación técnica
 
 ### Instalación
-`$ npm install ivvnv/SCL013-md-links`
+`$ npm i @ivvnv/md-links`
 
 ### Requerimientos
 Tener instalado:
@@ -45,7 +45,7 @@ Tener instalado:
 ### Uso
 CLI (Command Line Interface)
 
-`md-links <path> [options]`
+`node cli.js <path> [options]`
 
 ### Opciones
 `--validate` Arrojará una lista con los links y su status.
