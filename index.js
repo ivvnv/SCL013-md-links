@@ -150,35 +150,6 @@ const getHttpStatus = (url) => {
   });
 } */
 
-const statsUrls = () => {
-  fs.readFile(filePath, "utf-8", (err, file) => {
-    // entra al archivo
-    let uniqueUrlCount = 0;
-    let uniqueUrlCountTwo = 0;
-    let vUnique = true;
-    const stringLinks = file.match(RegExr);
-
-    stringLinks.forEach((vUrl) => {
-      vUnique = true;
-      uniqueUrlCountTwo = 0;
-      stringLinks.forEach((vUrlTwo) => {
-        if (vUrl == vUrlTwo && uniqueUrlCountTwo == 0) {
-          uniqueUrlCountTwo++;
-        } else if (vUrl == vUrlTwo) {
-          vUnique = false;
-        }
-      });
-      if (vUnique) uniqueUrlCount++;
-    });
-    console.log("Total Links: ", stringLinks.length);
-    console.log("Unique Links: ", uniqueUrlCount);
-  });
-};
-
-if (argv.stats || argv.s) {
-  statsUrls();
-}
-
 // module.exports = {
 //   // mdLinks,
 //   returnFileUrls,
