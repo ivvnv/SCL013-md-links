@@ -1,19 +1,19 @@
 {
   "name": "@ivvnv/md-links",
   "version": "0.1.0",
-  "description": "## Índice",
-  "main": "index.js",
+  "description": "Tool to fetch markdown links",
+  "main": "cli.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --coverage --verbose"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ivvnv/SCL013-md-links.git"
   },
-  "author": "",
+  "author": "\"Katherine Castillo - Ivana Rivera\"",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ivvnv/SCL013-md-links/issues"
@@ -22,6 +22,7 @@
   "dependencies": {
     "chalk": "^4.1.0",
     "fetch": "^1.1.0",
+    "jest": "^26.2.2",
     "yargs": "^15.4.1"
   }
 }
