@@ -47,6 +47,7 @@ const verifyDirectory = () => new Promise((resolve, reject) => {
    });
 })
 
+
 // consumo de promesa de verifyDirectory
 verifyDirectory().then(isDirectory => {
   if (isDirectory) {
@@ -56,11 +57,12 @@ verifyDirectory().then(isDirectory => {
         let extFile = path.extname(file);
         if (extFile === '.md') {
           returnFileUrls(file); // función que retorna array de links
+
         }
       })
     })
     .catch(error => console.log(chalk.redBright(error)));
-    } else {
+  } else {
     let extFile = path.extname(filePath); // si es archivo directo
     if (extFile === '.md') {
       returnFileUrls(filePath);
@@ -79,6 +81,7 @@ const returnFileUrls = (file) => {
     else {
       // console.log('nombre del archivo contenedor')
       console.log(newArray)
+
     }
   });
 }
