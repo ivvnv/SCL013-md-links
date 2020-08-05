@@ -29,7 +29,8 @@ algunas estadísticas.
 
 ## 2. Resumen del proyecto
 
-Md-links es un librería que se ejecuta por la terminal en donde podemos ver los links de un archivo .md, ver el estado http de este y sus estadisticas.
+Md-links es un librería que es ejecutada en la terminal, en donde podemos ver los links de un archivo .md,
+con opción de ver el estado http de cada url y sus estadisticas.
 
 ## 3. Documentación técnica
 
@@ -37,7 +38,9 @@ Md-links es un librería que se ejecuta por la terminal en donde podemos ver los
 `$ npm install ivvnv/SCL013-md-links`
 
 ### Requerimientos
-Tener instalado node.js
+Tener instalado:
+- node.js
+- Npm
 
 ### Uso
 CLI (Command Line Interface)
@@ -109,15 +112,22 @@ Broken: 1
 
 Nuestra planificación fue en Trello y Miró, haciendo en esta última un product backlog y un spring backlog para un mayor orden a la hora de ir desarrollando el programa; también se crearon flujos por cada realease del product backlog que en conjuntos hacen las historias de usuario y el flujo de trabajo.
 
-[Trello]()
-[Miró general]()
-[Release 1-2]()
-[Release 3]()
-[Release 4]()
-[Release 5]()
-[Release 6]()
-[Product Backlog 1]()
-[Product Backlog 2]()
+[Trello](https://raw.githubusercontent.com/ivvnv/SCL013-md-links/master/img%20readme/Trello.png)
+[Miró general](https://raw.githubusercontent.com/ivvnv/SCL013-md-links/master/img%20readme/miro-general.png)
+[Release 1-2](https://raw.githubusercontent.com/ivvnv/SCL013-md-links/master/img%20readme/release%201-2.png)
+
+#### Flujogramas
+
+[Release 3](https://raw.githubusercontent.com/ivvnv/SCL013-md-links/master/img%20readme/release%203.png)
+[Release 4](https://raw.githubusercontent.com/ivvnv/SCL013-md-links/master/img%20readme/release%204.png)
+[Release 5](https://raw.githubusercontent.com/ivvnv/SCL013-md-links/master/img%20readme/release%205.png)
+[Release 6](https://raw.githubusercontent.com/ivvnv/SCL013-md-links/master/img%20readme/release%206.png)
+
+#### Product Backlog
+
+[Product Backlog 1](https://raw.githubusercontent.com/ivvnv/SCL013-md-links/master/img%20readme/Product%20backlog%201.png)
+[Product Backlog 2](https://raw.githubusercontent.com/ivvnv/SCL013-md-links/master/img%20readme/Product%20backlog%202.png)
+
 
 ## 5. Checklist
 
