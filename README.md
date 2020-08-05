@@ -112,21 +112,21 @@ Broken: 1
 
 Nuestra planificación fue en Trello y Miró, haciendo en esta última un product backlog y un spring backlog para un mayor orden a la hora de ir desarrollando el programa; también se crearon flujos por cada realease del product backlog que en conjuntos hacen las historias de usuario y el flujo de trabajo.
 
-[Trello](https://raw.githubusercontent.com/ivvnv/SCL013-md-links/master/img%20readme/Trello.png)
-[Miró general](https://raw.githubusercontent.com/ivvnv/SCL013-md-links/master/img%20readme/miro-general.png)
-[Release 1-2](https://raw.githubusercontent.com/ivvnv/SCL013-md-links/master/img%20readme/release%201-2.png)
+![Trello](https://raw.githubusercontent.com/ivvnv/SCL013-md-links/master/img%20readme/Trello.png)
+![Miró general](https://raw.githubusercontent.com/ivvnv/SCL013-md-links/master/img%20readme/miro-general.png)
+![Release 1-2](https://raw.githubusercontent.com/ivvnv/SCL013-md-links/master/img%20readme/release%201-2.png)
 
 #### Flujogramas
 
-[Release 3](https://raw.githubusercontent.com/ivvnv/SCL013-md-links/master/img%20readme/release%203.png)
-[Release 4](https://raw.githubusercontent.com/ivvnv/SCL013-md-links/master/img%20readme/release%204.png)
-[Release 5](https://raw.githubusercontent.com/ivvnv/SCL013-md-links/master/img%20readme/release%205.png)
-[Release 6](https://raw.githubusercontent.com/ivvnv/SCL013-md-links/master/img%20readme/release%206.png)
+![Release 3](https://raw.githubusercontent.com/ivvnv/SCL013-md-links/master/img%20readme/release%203.png)
+![Release 4](https://raw.githubusercontent.com/ivvnv/SCL013-md-links/master/img%20readme/release%204.png)
+![Release 5](https://raw.githubusercontent.com/ivvnv/SCL013-md-links/master/img%20readme/release%205.png)
+![Release 6](https://raw.githubusercontent.com/ivvnv/SCL013-md-links/master/img%20readme/release%206.png)
 
 #### Product Backlog
 
-[Product Backlog 1](https://raw.githubusercontent.com/ivvnv/SCL013-md-links/master/img%20readme/Product%20backlog%201.png)
-[Product Backlog 2](https://raw.githubusercontent.com/ivvnv/SCL013-md-links/master/img%20readme/Product%20backlog%202.png)
+![Product Backlog 1](https://raw.githubusercontent.com/ivvnv/SCL013-md-links/master/img%20readme/Product%20backlog%201.png)
+![Product Backlog 2](https://raw.githubusercontent.com/ivvnv/SCL013-md-links/master/img%20readme/Product%20backlog%202.png)
 
 
 ## 5. Checklist
