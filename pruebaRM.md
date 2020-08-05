@@ -8,6 +8,12 @@
 
 [Cómo tomar el directorio actual](https://flaviocopes.com/)
 
+[Cómo tomar el directorio actual](https://flaviocopes.com/)
+
+[Cómo tomar el directorio actual](https://flaviocopes.com/)
+
 [Callbacks](https://www.am.com/Scissors-Titanium-Multipurpose-Comfort-Grip-Handles)
 
 [Facebook](https://www.fb.com/)
+
+[STACK](https://es.stackoverflow.com/questions/168contrar-repetidos-en-un-array-javascript)
