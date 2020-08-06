@@ -10,6 +10,7 @@
 
 ***
 
+![Logo](http://imgfz.com/i/BmpeZfH.png)
 ## 1. Preámbulo
 
 [Markdown](https://es.wikipedia.org/wiki/Markdown) es un lenguaje de marcado
@@ -34,18 +35,23 @@ con opción de ver el estado http de cada url y sus estadisticas.
 
 ## 3. Documentación técnica
 
-### Instalación
-`$ npm i @ivvnv/md-links`
-
 ### Requerimientos
 Tener instalado:
 - node.js
 - Npm
 
-### Uso
-CLI (Command Line Interface)
+### Instalación
+`$ npm i @ivvnv/md-links`
 
-`node cli.js <path> [options]`
+### Uso
+
+**Inserta en tu código**
+
+`const mdLinks = require('@ivvnv/md-links')`
+
+**En la terminal ingresa**
+
+`node archivoQueLlamaMdLinks.js archivoMdALeer.md [options]`
 
 ### Opciones
 `--validate` Arrojará una lista con los links y su status.
@@ -59,20 +65,20 @@ ___
 
 El ejecutable de nuestra aplicación se ejecuta de la siguiente manera a través de la terminal:
 
-`md-links <path-to-file> [options]`
+`node archivoQueLlamaMdLinks.js archivoMdALeer.md [options]`
 
 Por ejemplo:
 
 ```sh
-$ md-links ./some/example.md
-./some/example.md http://algo.com/2/3/ Link a algo
-./some/example.md https://otra-cosa.net/algun-doc.html algún doc
-./some/example.md http://google.com/ Google
+$ node index.js ./some/example.md
+ http://algo.com/2/3/ Link a algo
+ https://otra-cosa.net/algun-doc.html algún doc
+ http://google.com/ Google
 ```
 
 #### Options
 
-##### `--validate`
+##### `--validate  |  --v`
 
 Si pasas la opción `--validate`, el módulo hace una petición HTTP para
 averiguar si el link funciona o no. Si el link resulta en una redirección a una
@@ -81,33 +87,25 @@ URL que responde ok, entonces consideramos el link como ok.
 Por ejemplo:
 
 ```sh
-$ md-links ./some/example.md --validate
-./some/example.md http://algo.com/2/3/ ok 200 Link a algo
-./some/example.md https://otra-cosa.net/algun-doc.html fail 404 algún doc
-./some/example.md http://google.com/ ok 301 Google
+$ node index.js ./some/example.md
+ --validate
+ http://algo.com/2/3/ ok 200 Link a algo
+ https://otra-cosa.net/algun-doc.html fail 404 algún doc
+ http://google.com/ ok 301 Google
 ```
 
 
-##### `--stats`
+##### `--stats  |  --s`
 
 Si pasas la opción `--stats` el output (salida) será un texto con estadísticas
 básicas sobre los links.
 
 ```sh
-$ md-links ./some/example.md --stats
+$ node index.js ./some/example.md --stats
 Total: 3
-Unique: 3
+
 ```
 
-También podemos combinar `--stats` y `--validate` para obtener estadísticas que
-necesiten de los resultados de la validación.
-
-```sh
-$ md-links ./some/example.md --stats --validate
-Total: 3
-Unique: 3
-Broken: 1
-```
 ## 4. Planificación
 
 Nuestra planificación fue en Trello y Miró, haciendo en esta última un product backlog y un spring backlog para un mayor orden a la hora de ir desarrollando el programa; también se crearon flujos por cada realease del product backlog que en conjuntos hacen las historias de usuario y el flujo de trabajo.
@@ -133,30 +131,30 @@ Nuestra planificación fue en Trello y Miró, haciendo en esta última un produc
 
 ### General
 
-* [ ] Puede instalarse via `npm install --global <github-user>/md-links`
+* [X] Puede instalarse via `npm install --global <github-user>/md-links`
 
 * [X] Uso de condicionales (if-else | switch | operador ternario)
 * [X] Uso de funciones (parámetros | argumentos | valor de retorno)
 * [X] Manipular arrays (filter | map | sort | reduce)
 * [ ] Manipular objects (key | value)
-* [ ] Uso ES modules ([`import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
+* [X] Uso ES modules ([`import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
 | [`export`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export))
-* [ ] [Uso de callbacks.](https://developer.mozilla.org/es/docs/Glossary/Callback_function)
+* [X] [Uso de callbacks.](https://developer.mozilla.org/es/docs/Glossary/Callback_function)
 * [X] [Consumo de Promesas.](https://scotch.io/tutorials/javascript-promises-for-dummies#toc-consuming-promises)
 * [X] [Creación de Promesas.](https://www.freecodecamp.org/news/how-to-write-a-javascript-promise-4ed8d44292b8/)
 
 ### Node
 
 * [X] Uso de sistema de archivos. ([fs](https://nodejs.org/api/fs.html), [path](https://nodejs.org/api/path.html))
-* [ ] Instalar y usar módulos. ([npm](https://www.npmjs.com/))
+* [X] Instalar y usar módulos. ([npm](https://www.npmjs.com/))
 * [ ] Creación de modules. [(CommonJS)](https://nodejs.org/docs/latest-v0.10.x/api/modules.html)
-* [ ] [Configuración de package.json.](https://docs.npmjs.com/files/package.json)
+* [X] [Configuración de package.json.](https://docs.npmjs.com/files/package.json)
 * [ ] [Configuración de npm-scripts](https://docs.npmjs.com/misc/scripts)
 * [X] Uso de CLI (Command Line Interface - Interfaz de Línea de Comando)
 
 ### Testing
 
-* [ ] [Testeo unitario.](https://jestjs.io/docs/es-ES/getting-started)
+* [X] [Testeo unitario.](https://jestjs.io/docs/es-ES/getting-started)
 * [ ] [Testeo asíncrono.](https://jestjs.io/docs/es-ES/asynchronous)
 * [ ] Uso de Mocks manuales.
 
